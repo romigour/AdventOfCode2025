@@ -16,7 +16,7 @@ public class Day4 {
     private static long reponse1(List<String> inputs) {
         long resultat = 0;
 
-        int[][] grille = new int[inputs.size()][inputs.get(0).length()];
+        int[][] grille = new int[inputs.size()][inputs.getFirst().length()];
 
         for (int i = 0; i < inputs.size(); i++) {
             String[] lineArray = inputs.get(i).split("");
@@ -63,7 +63,7 @@ public class Day4 {
         long resultat = 0;
 
 
-        int[][] grille = new int[inputs.size()][inputs.get(0).length()];
+        int[][] grille = new int[inputs.size()][inputs.getFirst().length()];
 
         for (int i = 0; i < inputs.size(); i++) {
             String[] lineArray = inputs.get(i).split("");
