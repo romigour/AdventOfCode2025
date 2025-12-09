@@ -28,10 +28,10 @@ public class Day8 {
         List<Point> allPoints = new ArrayList<>(points);
         List<Point> pointsAlreadyUse = new ArrayList<>();
 
-        List<List<Point>> circuits = new ArrayList<>();
+        List<List<Point>> pairList = new ArrayList<>();
 
         List<Point> bestPair = new ArrayList<>();
-        List<Point> circuit = new ArrayList<>();
+        List<Set<Point>> circuits = new ArrayList<>();
 
         int idx = 0;
         while (!points.isEmpty()) {
@@ -51,17 +51,26 @@ public class Day8 {
                     }
                 }
             }
-
-
-                circuits.add(new ArrayList<>(bestPair));
-                points.removeIf(p -> p.equals(bestPair.getFirst()));
-                points.removeIf(p -> p.equals(bestPair.getLast()));
-
-
-
+            pairList.add(new ArrayList<>(bestPair));
+            points.removeIf(p -> p.equals(bestPair.getFirst()));
+            points.removeIf(p -> p.equals(bestPair.getLast()));
         }
 
+        for (List<Point> pair: pairList) {
+            boolean newCircuit = true;
+            for (Set<Point> circuit: circuits) {
+                if (circuit.contains(pair.getFirst()) || circuit.contains(pair.getLast())) {
+                    circuit.add(pair.getFirst());
+                    circuit.add(pair.getLast());
+                    newCircuit = false;
+                    break;
+                }
+            }
 
+            if (newCircuit) {
+                circuits.add(new HashSet<>(pair));
+            }
+        }
 
         return resultat;
     }
