@@ -34,10 +34,10 @@ public class Day8 {
 
         while (!points.isEmpty()) {
             double minDistance = Integer.MAX_VALUE;
-            for (int i = 0; i < points.size(); i++) {
-                for (int j = 0; j < allPoints.size(); j++) {
-                    Point p1 = points.get(i);
-                    Point p2 = allPoints.get(j);
+            for (Point point : points) {
+                for (Point allPoint : allPoints) {
+                    Point p1 = point;
+                    Point p2 = allPoint;
                     if (p1.equals(p2)) continue;
                     double distance = distance(p1, p2);
                     if (distance < minDistance) {
@@ -50,7 +50,7 @@ public class Day8 {
             }
             pairList.add(new ArrayList<>(bestPair));
             points.removeIf(p -> p.equals(bestPair.getFirst()));
-            points.removeIf(p -> p.equals(bestPair.getLast()));
+            //points.removeIf(p -> p.equals(bestPair.getLast()));
         }
 
         for (List<Point> pair: pairList) {
