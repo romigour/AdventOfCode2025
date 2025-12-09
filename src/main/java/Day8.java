@@ -26,16 +26,13 @@ public class Day8 {
         }).collect(Collectors.toCollection(ArrayList::new));
 
         List<Point> allPoints = new ArrayList<>(points);
-        List<Point> pointsAlreadyUse = new ArrayList<>();
 
         List<List<Point>> pairList = new ArrayList<>();
 
         List<Point> bestPair = new ArrayList<>();
         List<Set<Point>> circuits = new ArrayList<>();
 
-        int idx = 0;
         while (!points.isEmpty()) {
-            boolean newCircuit = false;
             double minDistance = Integer.MAX_VALUE;
             for (int i = 0; i < points.size(); i++) {
                 for (int j = 0; j < allPoints.size(); j++) {
